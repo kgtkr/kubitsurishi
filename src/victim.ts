@@ -1,9 +1,9 @@
-export class Sand extends Phaser.Text {
-  speed = 1;
+export class Victim extends Phaser.Text {
+  speed = 2;
   gUpdateIt = this.gUpdate();
 
   constructor(game: Phaser.Game) {
-    super(game, game.world.randomX, game.world.randomY, "砂", { fill: "yellow" });
+    super(game, game.world.randomX, game.world.randomY, "被", { fill: "green" });
   }
 
   update() {
@@ -12,11 +12,11 @@ export class Sand extends Phaser.Text {
   }
 
   * gUpdate(): IterableIterator<void> {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 30; i++) {
       const rad = this.game.rnd.realInRange(0, 2 * Math.PI);
       const vx = Math.cos(rad) * this.speed;
       const vy = Math.sin(rad) * this.speed;
-      for (let j = 0; j < 60; j++) {
+      for (let j = 0; j < 30; j++) {
         this.x += vx;
         this.y += vy;
         yield;

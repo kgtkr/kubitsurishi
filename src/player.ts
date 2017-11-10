@@ -1,12 +1,31 @@
 export class Player extends Phaser.Text {
   speed = 3;
+  gUpdateIt = this.gUpdate();
 
   constructor(game: Phaser.Game) {
-    super(game, game.world.width / 2, game.world.height - 100, "士", { fill: "#ffffff" });
+    super(game, game.world.width / 2, game.world.height - 100, "士", { fill: "blue" });
   }
 
   update() {
     super.update();
+    this.gUpdateIt.next();
+  }
+
+  * gUpdate(): IterableIterator<void> {
+    while (true) {
+      if (this.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR)) {
+        this.setStyle({ fill: "red" });
+        for (let i = 0; i < 60; i++) {
+          yield;
+        }
+        this.setStyle({ fill: "blue" });
+      }
+      this.move();
+      yield;
+    }
+  }
+
+  move() {
     const left = this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT);
     const right = this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT);
     const up = this.game.input.keyboard.isDown(Phaser.Keyboard.UP);
