@@ -2,7 +2,7 @@ export class Player extends Phaser.Text {
   speed = 3;
 
   constructor(game: Phaser.Game) {
-    super(game, game.world.width / 2, game.world.height - 100, "主", { fill: "#ffffff" });
+    super(game, game.world.width / 2, game.world.height - 100, "士", { fill: "#ffffff" });
   }
 
   update() {
