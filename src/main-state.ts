@@ -1,5 +1,3 @@
-/// <reference path="../node_modules/phaser-ce/typescript/phaser.d.ts"/>
-
 export class MainState extends Phaser.State {
     constructor() {
         super();
