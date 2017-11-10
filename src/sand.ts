@@ -1,9 +1,9 @@
-export class Sand extends Phaser.Text {
+export class Sand extends Phaser.Sprite {
   speed = 1;
   gUpdateIt = this.gUpdate();
 
   constructor(game: Phaser.Game) {
-    super(game, game.world.randomX, game.world.randomY, "砂", { fill: "yellow" });
+    super(game, game.world.randomX, game.world.randomY, "sand");
   }
 
   update() {

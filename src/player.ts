@@ -1,9 +1,11 @@
-export class Player extends Phaser.Text {
+export class Player extends Phaser.Sprite {
   speed = 3;
   gUpdateIt = this.gUpdate();
+  atack = false;
 
   constructor(game: Phaser.Game) {
-    super(game, game.world.width / 2, game.world.height - 100, "士", { fill: "blue" });
+    super(game, game.world.width / 2, game.world.height - 100, "player");
+    game.debug.body(this);
   }
 
   update() {
@@ -14,11 +16,13 @@ export class Player extends Phaser.Text {
   * gUpdate(): IterableIterator<void> {
     while (true) {
       if (this.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR)) {
-        this.setStyle({ fill: "red" });
+        this.loadTexture('player-atack');
+        this.atack = true;
         for (let i = 0; i < 60; i++) {
           yield;
         }
-        this.setStyle({ fill: "blue" });
+        this.atack = false;
+        this.loadTexture('player');
       }
       this.move();
       yield;

@@ -1,9 +1,9 @@
-export class Victim extends Phaser.Text {
+export class Victim extends Phaser.Sprite {
   speed = 2;
   gUpdateIt = this.gUpdate();
 
   constructor(game: Phaser.Game) {
-    super(game, game.world.randomX, game.world.randomY, "被", { fill: "green" });
+    super(game, game.world.randomX, game.world.randomY, "victim");
   }
 
   update() {
