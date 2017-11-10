@@ -1,4 +1,8 @@
+import { Player } from "./player";
+
 export class MainState extends Phaser.State {
+    player: Player;
+
     constructor() {
         super();
     }
@@ -7,14 +11,20 @@ export class MainState extends Phaser.State {
     }
 
     preload() {
-        this.load.image('test', 'assets/test.png');
     }
 
     create() {
-        var logo = this.add.sprite(this.world.centerX, this.world.centerY, 'test');
-        logo.anchor.setTo(0.5, 0.5);
+        this.player = new Player(this.game);
+        this.add.existing(this.player);
     }
 
     update() {
+        this.player.update();
+    }
+
+    * gUpdate(): IterableIterator<void> {
+        while (true) {
+
+        }
     }
 }
