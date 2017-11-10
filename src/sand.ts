@@ -12,7 +12,7 @@ export class Sand extends Phaser.Text {
   }
 
   * gUpdate(): IterableIterator<void> {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       const rad = this.game.rnd.realInRange(0, 2 * Math.PI);
       const vx = Math.cos(rad) * this.speed;
       const vy = Math.sin(rad) * this.speed;
