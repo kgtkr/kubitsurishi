@@ -1,3 +1,6 @@
+import * as util from "./util";
+
+
 export class Player extends Phaser.Sprite {
   speed = 3;
   gUpdateIt = this.gUpdate();
@@ -11,6 +14,7 @@ export class Player extends Phaser.Sprite {
   update() {
     super.update();
     this.gUpdateIt.next();
+    util.setIn(this.game, this);
   }
 
   * gUpdate(): IterableIterator<void> {

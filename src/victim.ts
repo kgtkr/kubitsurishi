@@ -1,6 +1,9 @@
+import * as util from "./util";
+
 export class Victim extends Phaser.Sprite {
   speed = 2;
   gUpdateIt = this.gUpdate();
+  run = new Phaser.Signal();
 
   constructor(game: Phaser.Game) {
     super(game, game.world.randomX, game.world.randomY, "victim");
@@ -9,6 +12,7 @@ export class Victim extends Phaser.Sprite {
   update() {
     super.update();
     this.gUpdateIt.next();
+    util.setIn(this.game, this);
   }
 
   * gUpdate(): IterableIterator<void> {
@@ -23,5 +27,10 @@ export class Victim extends Phaser.Sprite {
       }
     }
     this.destroy(true);
+    this.run.dispatch();
+  }
+
+  shutdown() {
+    this.run.removeAll();
   }
 }
